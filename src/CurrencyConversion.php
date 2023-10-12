@@ -17,7 +17,7 @@ class CurrencyConversion extends API
     /**
      * @var string
      */
-    protected $base_url  = 'https://api.exchangerate.host/convert';
+    protected $base_url  = 'http://api.exchangerate.host/convert';
 
     /**
      * Required base currency
@@ -70,9 +70,10 @@ class CurrencyConversion extends API
             }
 
             $params = [
-                'from'   => $this->from,
-                'to'     => $this->to,
-                'amount' => $this->amount
+                'access_key' => env('EXCHANGE_RATES_API_KEY'),
+                'from'       => $this->from,
+                'to'         => $this->to,
+                'amount'     => $this->amount
             ];
 
             if ($this->places) {

@@ -70,7 +70,7 @@ class CurrencyConversion extends API
             }
 
             $params = [
-                'access_key' => env('EXCHANGE_RATES_API_KEY'),
+                'access_key' => $this->access_key,
                 'from'       => $this->from,
                 'to'         => $this->to,
                 'amount'     => $this->amount
@@ -125,6 +125,17 @@ class CurrencyConversion extends API
     public function amount(float $amount)
     {
         $this->amount = $amount;
+        return $this;
+    }
+
+    /**
+     * @param $access_key
+     *
+     * @return $this
+     */
+    public function access_key(string $access_key)
+    {
+        $this->access_key = $access_key;
         return $this;
     }
 
